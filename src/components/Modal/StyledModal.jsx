@@ -17,7 +17,7 @@ left: 0;
 z-index: 9999;
 
 background: ${props => props.theme.modalBackground}; 
-/* cursor: pointer; */
+background-image: ${props => props.theme.bgGradient};
 
 
 .modal {
@@ -26,17 +26,26 @@ background: ${props => props.theme.modalBackground};
     justify-content: space-around;
 
     min-width: 600px;
-
-
     margin-top: 2vh;
     padding: 1px;
 
-    backdrop-filter: blur(5px);
+    /* backdrop-filter: blur(5px); */
     
     position: relative;
     cursor: default;
 
+    min-width: 660px;
+    width: 85vw;
+    max-width: 1050px;
+    height: 60vw;
+    min-height: 300px;
+    max-height: 600px;
+
+    text-align: center;
+    border-radius: 25px;
     background: ${props => props.theme.mainBg};
+    box-shadow: ${props => props.theme.secondBoxShadow};
+    border: 2px solid ${props => props.theme.secondColor};
     
 }
 

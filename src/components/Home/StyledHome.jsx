@@ -12,9 +12,6 @@ display: flex;
 flex-direction: column;
 align-items: center;
 
-.logo {
-    margin-top: 2%;
-}
 
 .center {
     height: 100%;
@@ -29,7 +26,7 @@ align-items: center;
 }
 
 .highlights {
-    background-color: ${props => props.theme.secondColor};
+    /* background-color: ${props => props.theme.secondColor}; */
     
     /* width: 100vw; */
     width: 100%;
@@ -42,14 +39,14 @@ align-items: center;
 }
 
 .highlights p {
-    color: ${props => props.theme.thirdColor};
     width: 70%;
     margin: auto;
+    color: ${props => props.theme.mainColor};
 
 }
 
 .highlights h3 {
-    color: #0d1137;
+    color: ${props => props.theme.secondColor};
     width: 70%;
     margin: auto;
 }

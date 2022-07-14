@@ -4,7 +4,7 @@ export const StyledButton = styled.button`
     
 border-radius: 10px;
 
-padding: 10px;
+padding: 10px 25px;
 
 font-size: 16px;
 font-weight: bold;
@@ -14,6 +14,7 @@ cursor: pointer;
 
 background-color: ${props => props.theme.secondColor};
 border: 2px solid ${props => props.theme.mainColor};
+box-shadow: ${props => props.theme.secondBoxShadow};
 
 :hover {
     color:  ${props => props.theme.secondColor};

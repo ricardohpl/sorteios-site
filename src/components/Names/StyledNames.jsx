@@ -10,8 +10,9 @@ padding: 15px;
 width: 60%;
 height: 100%;
 min-height: 600px;
-
 min-width: 650px;
+
+color: ${props => props.theme.thirdColor};
 
 .center {
     width: 100%;
@@ -21,11 +22,18 @@ min-width: 650px;
     
 }
 
+.loading {
+    margin: auto;
+    font-size: 22px;
+    color:  ${props => props.theme.mainColor};
+}
+
 .title {
     color:  ${props => props.theme.secondColor};
     font-family: 'Shadows Into Light', cursive;
     font-size: 42px;
     font-weight: 600;
+    padding: 20px;
 }
 
 .checkbox {
@@ -33,11 +41,16 @@ min-width: 650px;
     color:  ${props => props.theme.thirdColor};
 }
 
+.displayCount {
+    font-size: 46px;
+    font-weight: 600;
+    
+}
+
 .namesContainer {
     position: relative;
     width: 60%;
     height: 150px;
-    /* width: 55%; */
     min-width: 450px;
     margin: 25px 10px;
     padding: 10px;
@@ -60,7 +73,6 @@ min-width: 650px;
     left: 0;
 
 }
-
 
 .namesLabel {
     position: absolute;
@@ -86,35 +98,29 @@ min-width: 650px;
 }
 
 // Modal
-.modal {
-    min-width: 660px;
-    width: 82vw;
-    max-width: 1050px;
-    height: 45vw;
-    min-height: 300px;
-    max-height: 600px;
-
-    text-align: center;
-    border-radius: 4%;
-}
-
 #videoModal {
-    top: -5px;
-    left: -15px;
+    top: 0px;
+    left: -45px;
     position: absolute;
-    width: 85vw;
-    max-width: 1100px;
+    width: 110vw;
     z-index: -5;
     border-radius: 12px;
-    border: 2px solid ${props => props.theme.secondColor};
+    background-image: ${props => props.theme.bgGradient};
+}
+
+#videoModal video {
+    width: 110vw;
+
 }
 
 .results {
     margin: auto;
-    width: 40%;
+    width: 60%;
     background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid ${props => props.theme.secondColor};
+    box-shadow: ${props => props.theme.secondBoxShadow};
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 25px;
 }
 
 .modalButtons {
@@ -138,7 +144,7 @@ min-width: 650px;
     height: 70px;
     width: 100%;
     font-size: 36px;
-    color: ${props => props.theme.thirdColor};
+    color:  ${props => props.theme.mainColor};
     z-index: 5;
     
 }

@@ -24,7 +24,6 @@ header.header {
 
     display: flex;
     justify-content: center;
-    padding: 10px;
     
 }
 
@@ -59,7 +58,6 @@ button {
     margin: 15px;
     padding: 5px;
     border-radius: 5px;
-    
 
 }
 
@@ -70,8 +68,10 @@ button:hover {
 
 /* Page Not Found */
 .notFound {
+    width: 55%;
+    /* height: 80%; */
     color: ${props => props.theme.errorText};
-    margin-top: 25%;
+    /* margin: auto; */
     text-align: center;
 }
 

@@ -4,9 +4,7 @@ import styled from 'styled-components'
 export const StyledMenu = styled.aside`
 
 margin: 15px;
-
 color: ${props => props.theme.secondColor};
-
 border-radius: 5px;
 
 .menu {
@@ -36,8 +34,9 @@ ul {
 
 li {
     margin: 20px 5px;
-    font-size: 30px;
+    font-size: 28px;
     position: relative;
+    border-radius: 5px;
 }
 
 .menuItem {
@@ -54,12 +53,9 @@ li {
     width: 215px;
 }
 
-.menu:hover ~ ul {
-    background-color: white;
-}
 
 li:hover  {
-    background-color: ${props => props.theme.thirdColor};
+    background-color: ${props => props.theme.secondColor};
     box-shadow: ${props => props.theme.mainBoxShadow};
 }
 
