@@ -1,19 +1,17 @@
-import gerarNumeros from "./gerarNumeros"
+import generateNumbers from "./generateNumbers"
 
 
-function generateNamesArray(names) {
+function generateNamesArray(names, quantity) {
     let numIni = 0
     let numEnd = names.length - 1
-    let qtd = names.length
 
-    let raffleCodeNames = gerarNumeros(qtd, numIni, numEnd)
+    let raffleCodeNames = generateNumbers(quantity, numIni, numEnd)
     let newNames = []
 
-    for (let i = 0; i <= numEnd; i++) {
+    for (let i = 0; i <= (quantity - 1); i++) {
         newNames.push(names[+raffleCodeNames[i]])
     }
 
-    console.log(raffleCodeNames, newNames)
     return newNames
 
 }

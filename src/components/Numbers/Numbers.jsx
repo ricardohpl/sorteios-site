@@ -3,21 +3,23 @@ import { StyledNumbers } from './StyledNumbers'
 import { Container } from '../styles/Container.styled'
 import { StyledButton } from '../styles/StyledButton'
 
-import gerarNumeros from '../../core/gerarNumeros'
+import generateNumbers from '../../core/generateNumbers'
 import Modal from '../Modal/Modal'
 import Logo from '../Logo/Logo'
 
-import { Bubbles } from './StyledNumbers'
+import BubblesContainer from '../Animations/BubblesContainer'
+import BgAnimation from '../Animations/BgAnimation'
+import Results from '../Results/Results'
+import Counter from '../Counter/Counter'
 
-// import video from '../../assets/video/pexels-cottonbro-cutted.mp4'
 
 const Numbers = () => {
 
-    const [qtde, setQtde] = useState(6)
+    const [quantity, setQuantity] = useState(6)
     const [numIni, setNumIni] = useState(1)
     const [numEnd, setNumEnd] = useState(60)
 
-    const [numeros, setNumeros] = useState(0)
+    const [numbers, setNumbers] = useState(0)
     const [modal, setModal] = useState('none')
     const [loading, setLoading] = useState(true)
     const [render, setRender] = useState(false)
@@ -25,6 +27,8 @@ const Numbers = () => {
     const [doCount, setDoCount] = useState(false)
     const [idTimeOut, setIdTimeOut] = useState(0)
 
+    const [allResults, setAllResults] = useState(false)
+    const [animations, setAnimations] = useState(true)
 
     useEffect(() => {
         setTimeout(() => {
@@ -33,7 +37,8 @@ const Numbers = () => {
     }, [modal])
 
     useEffect(() => {
-        handleQuantity(qtde)
+        if (quantity <= 0) { handleQuantity(1) }
+        else { handleQuantity(quantity) }
     }, [numIni, numEnd])
 
     useEffect(() => {
@@ -53,37 +58,63 @@ const Numbers = () => {
         if (numCount > 0) {
             interval = setTimeout(() => {
                 handleCount(numCount)
-            }, [1150])
+            }, [1075])
             setIdTimeOut(interval)
         }
         if (numCount === 0) {
             setRender(true)
             setDoCount(false)
         }
-        console.log(numCount, count)
     }
 
     const handleNumbersIni = (number) => {
+        if (number >= 999999999) { number = 999999999 }
+        setNumIni(+number)
+    }
+
+    const minNumbersIni = (number) => {
         if (number >= numEnd) { number = numEnd }
-        if (number <= 1) { number = 1 }
+        if (number < 1) { number = 1 }
         setNumIni(+number)
     }
 
     const handleNumbersEnd = (number) => {
+        if (number >= 999999999) { number = 999999999 }
+        setNumEnd(+number)
+    }
+
+    const minNumbersEnd = (number) => {
         if (number <= numIni) { number = numIni }
+        if (number < 1) { number = 1 }
         setNumEnd(+number)
     }
 
     const handleQuantity = (number) => {
         let total = (numEnd - numIni) + 1
-        if (number <= 1) { number = 1 }
+        // if (number <= 1) { number = 1 }
         if (number >= total) { number = total }
-        setQtde(+number)
+        if (number >= 9999) { number = 9999 }
+        setQuantity(+number)
+    }
+
+    const minQuantity = (number) => {
+        if (number < 1) { number = 1 }
+        setQuantity(+number)
+
+    }
+
+
+    const handleAllResults = () => {
+        setAllResults(current => !current)
+    }
+
+    const handleAnimations = () => {
+        setAnimations(current => !current)
     }
 
     const runLottery = (numIni, numEnd) => {
-        setCount(6)
-        setNumeros(gerarNumeros(qtde, numIni, numEnd))
+        if (animations) { setCount(6) }
+        setNumbers(generateNumbers(quantity, numIni, numEnd))
         setRender(false)
         setDoCount(true)
         setModal('flex')
@@ -98,39 +129,51 @@ const Numbers = () => {
         clearTimeout(idTimeOut)
     }
 
+
     return (
         <StyledNumbers>
             <div className='center'>
-                <Container w='80%' h='85%' minW='525px'>
+                <Container w='80%' h='85%' minW='480px' minH='550px'>
                     <h2 className='title'>NÚMEROS</h2>
                     <div className='numbers'>
                         <label className='numbersLabel' htmlFor="numbersIni">Número Inicial: </label>
                         <input
                             className='numberArea input'
-                            type="number" required value={numIni} onChange={e => handleNumbersIni(+e.target.value)}
+                            type="number" required value={numIni} 
+                            onBlur={e => minNumbersIni(+e.target.value)}
+                            onChange={e => handleNumbersIni(+e.target.value)}
                         />
+                        <label className='labelHelp' >Número inicial não pode ser maior que número final, mínimo é 1.</label>
+                        <label className='labelHelp' >Máximo 9 dígitos.</label>
                     </div>
                     <div className='numbers'>
                         <label className='numbersLabel' htmlFor="numbersEnd">Número Final: </label>
                         <input
                             className='numberArea input'
-                            type="number" value={numEnd} onChange={e => handleNumbersEnd(+e.target.value)}
+                            type="number" value={numEnd} 
+                            onBlur={e => minNumbersEnd(+e.target.value)}
+                            onChange={e => handleNumbersEnd(+e.target.value)}
                         />
+                        <label className='labelHelp' >Número final não pode ser menor que número inicial, mínimo é 1.</label>
                     </div>
                     <div className='numbers'>
-                        <label className='numbersLabel' htmlFor="numbersLabel">Quantidade de Números Sorteados: </label>
+                        <label className='numbersLabel quantity' htmlFor="numbersLabel">Números Sorteados: </label>
                         <input
                             className='numberArea input'
-                            type="number" value={qtde} onChange={e => handleQuantity(+e.target.value)}
+                            type="number" value={quantity}
+                            onBlur={(e) => minQuantity(+e.target.value)}
+                            onChange={e => handleQuantity(+e.target.value)}
                             max={numEnd}
                         />
-                        <label className='labelHelp' >Mínimo é 1 e máximo é baseado nos números selecionados.</label>
+                        <label className='labelHelp' >Mínimo é 1 e máximo é baseado nos números selecionados <br /> (máximo 4 dígitos).</label>
                     </div>
                     <div>
-                        <input className='checkbox' type="checkbox" name='allResults'></input> <label>Visualizar os resultados todos de uma vez</label>
+                        <input className='checkbox' type="checkbox" name='allResults' checked={allResults} onChange={() => handleAllResults()} />
+                        <label className='checkboxLable' onClick={() => handleAllResults()}>Visualizar os resultados todos de uma vez</label>
                     </div>
                     <div>
-                        <input className='checkbox' type="checkbox" name='animations' /><label>Animação com contagem regressiva</label>
+                        <input className='checkbox' type="checkbox" name='animations' checked={animations} onChange={() => handleAnimations()} />
+                        <label className='checkboxLable' onClick={() => handleAnimations()}>Contagem regressiva</label>
                     </div>
                     <StyledButton onClick={() => runLottery(numIni, numEnd)} >Realizar Sorteio</StyledButton>
                 </Container>
@@ -143,115 +186,29 @@ const Numbers = () => {
                         :
                         <>
                             <div id='animateContainer'>
-                                <div className="squareContainers">
-                                    <div className="square"></div>
-                                    <div className="square"></div>
-                                    <div className="square"></div>
-                                    <div className="square"></div>
-                                    <div className="square"></div>
-                                    <div className="square"></div>
-                                    <div className="square"></div>
-                                    <div className="square"></div>
-                                </div>
-                                <div className='bubbleContainer'>
-                                    <div className="bubbles">
-                                        <Bubbles var='11' />
-                                        <Bubbles var='20' />
-                                        <Bubbles var='13' />
-                                        <Bubbles var='18' />
-                                        <Bubbles var='25' />
-                                        <Bubbles var='17' />
-                                        <Bubbles var='14' />
-                                        <Bubbles var='22' />
-                                        <Bubbles var='12' />
-                                        <Bubbles var='9' />
-                                        <Bubbles var='27' />
-                                        <Bubbles var='19' />
-                                        <Bubbles var='23' />
-                                        <Bubbles var='16' />
-                                        <Bubbles var='30' />
-                                        <Bubbles var='24' />
-                                        <Bubbles var='15' />
-                                        <Bubbles var='25' />
-                                        <Bubbles var='21' />
-                                        <Bubbles var='10' />
-                                        <Bubbles var='17' />
-                                        <Bubbles var='6' />
-                                        <Bubbles var='26' />
-                                        <Bubbles var='16' />
-                                        <Bubbles var='15' />
-                                        <Bubbles var='27' />
-                                        <Bubbles var='14' />
-                                        <Bubbles var='11' />
-                                        <Bubbles var='19' />
-                                        <Bubbles var='20' />
-                                        <Bubbles var='13' />
-                                        <Bubbles var='18' />
-                                        <Bubbles var='25' />
-                                        <Bubbles var='14' />
-                                        <Bubbles var='22' />
-                                        <Bubbles var='12' />
-                                        <Bubbles var='8' />
-                                        <Bubbles var='27' />
-                                        <Bubbles var='19' />
-                                        <Bubbles var='23' />
-                                        <Bubbles var='16' />
-                                        <Bubbles var='30' />
-                                        <Bubbles var='24' />
-                                        <Bubbles var='25' />
-                                        <Bubbles var='21' />
-                                        <Bubbles var='10' />
-                                        <Bubbles var='17' />
-                                        <Bubbles var='26' />
-                                        <Bubbles var='11' />
-                                        <Bubbles var='19' />
-                                        <Bubbles var='19' />
-                                        <Bubbles var='23' />
-                                        <Bubbles var='7' />
-                                        <Bubbles var='16' />
-                                        <Bubbles var='30' />
-                                        <Bubbles var='24' />
-                                        <Bubbles var='15' />
-                                        <Bubbles var='25' />
-                                        <Bubbles var='15' />
-                                        <Bubbles var='27' />
-                                        <Bubbles var='14' />
-                                        <Bubbles var='11' />
-                                        <Bubbles var='19' />
-                                        <Bubbles var='26' />
-                                    </div>
-                                </div>
+                                <BgAnimation />
+                                <BubblesContainer />
                             </div>
                             <div className='modal' >
                                 <Logo className='logoModalName' />
                                 {
                                     render ?
                                         <>
-                                            <p className='text'> Resultado: </p>
-                                            <div className='results' >
-                                                <span></span>
-                                                <h3 className='displayNumbers'>
-                                                    {numeros.join(' - ')}
-                                                </h3>
-                                            </div>
+                                            <Results allResults={allResults} dates={numbers} />
                                         </>
                                         :
                                         <div className='center'>
-                                            <div className='countContainer'>
-                                                <span></span>
-                                                <h3 className='displayCount'> {count} </h3>
-                                            </div>
+                                            <Counter count={count} />
                                         </div>
                                 }
                                 <button className='botaoFechar' onClick={() => closeModal()} > X </button>
                                 <div>
-                                    <StyledButton onClick={() => closeModal()} >Sair</StyledButton>
+                                    <StyledButton onClick={() => closeModal()} > Sair </StyledButton>
                                 </div>
                             </div>
                         </>
                 }
             </Modal>
-
         </StyledNumbers>
     )
 }

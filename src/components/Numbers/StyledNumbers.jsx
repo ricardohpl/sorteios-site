@@ -1,56 +1,20 @@
 
-import { keyframes } from "styled-components"
 import styled from 'styled-components'
-// tem que refatorar
-
-
-const RotateAnimation = keyframes`
-    0% {
-        transform: rotate(0deg) scale(0);
-    }
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
-`
-
-const RotateAnimationNeg = keyframes`
-    0% {
-        transform: rotate(0deg) scale(0);
-    }
-    100% {
-        transform: rotate(-360deg) scale(1);
-    }
-`
-
-const UpAnimation = keyframes`
-    0% {
-        transform: translateY(100vh) scale(0);
-    }
-    100% {
-        transform:  translateY(-10vh) scale(1);
-    }
-`
-const RotationBorder = keyframes`
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-`
 
 export const StyledNumbers = styled.div`
-
-color: ${props => props.theme.thirdColor};
 
 display: flex;
 justify-content: center;
 
-padding: 15px;
+padding: 10px;
+margin: 5px 30px;
 height: 100%;
 min-height: 500px;
-min-width: 650px;
+min-width: 450px;
 width: 60%;
+text-align: center;
+
+color: ${props => props.theme.thirdColor};
 
 .loading {
     margin: auto;
@@ -64,7 +28,7 @@ width: 60%;
     height: 100%;
     display: flex;
     justify-content: center;
-    
+    align-items: center;
 }
 
 .title {
@@ -76,42 +40,49 @@ width: 60%;
 }
 
 .numbers {
-    margin: 15px;
+    margin: 15px 10px 0 5px;
 }
 
-.displayCount {
-    font-size: 66px;
-    font-weight: 600;
-    z-index: 2;
-    
+.quantity {
+    margin-left: 25px;
 }
+
 
 .center .input {
     height: 30px;
-    width: 75px;
+    width: 125px;
     margin-left: 10px;
-    padding-left: 10px;
+    padding: 2px 5px 0 5px;
     border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
 }
 
 .labelHelp {
     display: block;
-    margin: 2px;
+    margin-top: 2px;
     font-size: 14px;
-    text-align: right;
+    text-align: center;
     color: ${props => props.theme.secondColor};
-
 }
 
 .checkbox {
-    margin: 15px 8px;
     color:  ${props => props.theme.thirdColor};
+    cursor: pointer;
 }
+
+.checkboxLable {
+    margin-left: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
 
 // Modal
 #animateContainer {
     top: 0px;
-    left: -45px;
+    left: 0;
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -121,256 +92,96 @@ width: 60%;
     min-width: 800px;
     min-height: 650px;
 
-}
-
-.results {
-    margin: 5px auto;
-    position: relative;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 450px;
-    height: 200px;
-    max-width: 55%;
-    max-height: 65%;
-    background-color: rgba(0, 0, 0, 0.7);
     overflow: hidden;
-    
-    font-size: 32px;
+}
+
+
+.logoModalName {
     color: ${props => props.theme.thirdColor};
-    box-shadow: ${props => props.theme.secondBoxShadow};
-    border-radius: 5px;
-    padding: 10px 25px;
-    z-index: 5;
-
-    animation: 5s ease-out;
-}
-
-.results::after {
-    content: '';
-    position: absolute;
-    width: 500px;
-    height: 525px;
-    background-image: conic-gradient(transparent, transparent, transparent, ${props => props.theme.thirdColor});
-    animation: 4s linear infinite;
-    animation-name: ${RotationBorder};
-    animation-delay: -2s;
-}
-
-.results::before {
-    content: '';
-    position: absolute;
-    width: 500px;
-    height: 525px;
-    background-image: conic-gradient(transparent, transparent, transparent, ${props => props.theme.secondColor});
-    animation: 4s linear infinite;
-    animation-name: ${RotationBorder};
-}
-
-.results span {
-    position: absolute;
-    inset: 5px;
-    background: ${props => props.theme.mainBg};
-    border-radius: 16px;
-    z-index: 1;
-}
-
-.displayNumbers {
-    overflow: auto;
-    z-index: 9;
-    color: ${props => props.theme.thirdColor};
-}
-
-
-.text {
-    color: ${props => props.theme.secondColor};
-    font-size: 36px;
     margin-top: 20px;
 }
 
-.logoModalName {
-    color: ${props => props.theme.thirdColor}
+@media (max-width: ${props => props.theme.mediumScreens}) {
+
+/* min-width: 450px; */
+padding: 5px;
+
+.title {
+    font-size: 32px;
+    padding: 5px;
 }
 
-/* Square Animation */
-.squareContainers {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.squareContainers .square {
-    position: relative;
-    width: 125px;
-    height: 225px;
-    margin: -30px;
-
-    border-radius: 25px;
-    border: 4px solid transparent;
-
-}
-
-.squareContainers .square::before {
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: ${props => props.theme.secondColor};
-    border-radius: 45px;
-    right: 5px;
-    box-shadow: 0 0 0 5px ${props => props.theme.boxShadowAnimate}, 0 0 0 10px ${props => props.theme.boxShadowAnimate}, 
-    0 0 0 20px ${props => props.theme.boxShadowAnimate}, 0 0 0 30px ${props => props.theme.boxShadowAnimate};
-
-}
-
-.squareContainers .square:nth-child(1) {
-    left: -275px;
-    animation: 3s linear infinite;
-    animation-name: ${RotateAnimationNeg};
-}
-
-.squareContainers .square:nth-child(2) {
-    top: 250px;
-    left: -125px;
-    animation: 2s linear infinite;
-    animation-name: ${RotateAnimation};
-
-}
-
-.squareContainers .square:nth-child(3) {
-    top: -275px;
-    left: -75;
-    animation: 4s linear infinite;
-    animation-name: ${RotateAnimation};
-}
-
-.squareContainers .square:nth-child(4) {
-    top: 150px;
-    left: 75px;
-    animation: 5s linear infinite;
-    animation-name: ${RotateAnimation};
-}
-
-.squareContainers .square:nth-child(5) {
-    top: -175px;
-    left: 175px;
-    animation: 7s linear infinite;
-    animation-name: ${RotateAnimation};
-}
-
-.squareContainers .square:nth-child(6) {
-    top: 275px;
-    left: 245px;
-    animation: 2s linear infinite;
-    animation-name: ${RotateAnimationNeg};
-}
-
-.squareContainers .square:nth-child(7) {
-    top: -115px;
-    left: 365px;
-    animation: 5s linear infinite;
-    animation-name: ${RotateAnimationNeg};
-}
-
-.squareContainers .square:nth-child(8) {
-    top: 175px;
-    left: 245px;
-    animation: 3s linear infinite;
-    animation-name: ${RotateAnimation};
-}
-
-/* Count Animation */
-.countContainer {
-    position: relative;
-    width: 275px;
-    height: 350px;
-    margin-top: 45px;
-
-    background: rgba(0, 0, 0, 0.75);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.countContainer::after {
-    content: '';
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    background-image: conic-gradient(transparent, transparent, transparent, ${props => props.theme.thirdColor});
-    animation: 4s linear infinite;
-    animation-name: ${RotationBorder};
-    animation-delay: -2s;
-}
-
-
-.countContainer::before {
-    content: '';
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    background-image: conic-gradient(transparent, transparent, transparent, ${props => props.theme.secondColor});
-    animation: 4s linear infinite;
-    animation-name: ${RotationBorder};
-}
-
-.countContainer span {
-    position: absolute;
-    inset: 5px;
-    background: ${props => props.theme.mainBg};
-    border-radius: 16px;
-    z-index: 1;
-}
-
-/* Bubbles Animation */
-.bubbleContainer {
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 125vw;
-    height: 100vh;
+.center .input {
+    height: 25px;
+    width: 95px;
+    margin-left: 5px;
+    padding: 2px 5px 0 5px;
     
-    min-width: 800px;
-    min-height: 650px;
-    overflow: hidden;
+    font-size: 12px;
+}
+
+.numbers {
+    margin: 5px 5px 0 5px;
+}
+
+.numbersLabel {
+    font-size: 14px;
+}
+
+.labelHelp {
+    font-size: 12px;
+}
 
 }
 
-.bubbles {
-    position: relative;
-    display: flex;
+
+@media (max-width: ${props => props.theme.smallScreens}) {
+
+min-width: 300px;
+padding: 5px;
+
+.title {
+    font-size: 30px;
+    padding: 5px;
 }
 
-`
+.center .input {
+    height: 20px;
+    width: 85px;
+    margin-left: 5px;
+    padding: 1px 3px 0 5px;
+    
+    font-size: 10px;
+}
 
-export const Bubbles = styled.span.attrs(props => ({
-    var: `${props.var}`
-}))`
+.numbers {
+    margin: 5px 5px 0 5px;
+}
 
-position: relative;
-width: 22px;
-height: 16px;
-background: ${props => props.theme.secondColor};
-margin: 0 4px;
-border-radius: 50%;
-box-shadow: 0 0 0 5px ${props => props.theme.boxShadowAnimate}, 0 0 0 12px ${props => props.theme.boxShadowAnimate}, 
-0 0 0 20px ${props => props.theme.boxShadowAnimate};
-animation: 15s linear infinite;
-animation-name: ${UpAnimation};
-animation-duration: calc(80s / ${props => props.var});
+.quantity {
+    margin-left: 25px;
+}
 
-:nth-child(even) {
-    background: ${props => props.theme.thirdColor};
-    box-shadow: 0 0 0 5px ${props => props.theme.boxShadowAnimateTC}, 0 0 0 12px ${props => props.theme.boxShadowAnimateTC}, 
-    0 0 0 20px ${props => props.theme.boxShadowAnimateTC};
+.numbersLabel {
+    font-size: 12px;
+}
+
+.labelHelp {
+    font-size: 12px;
+}
+
+.checkbox {
+    margin-left: 5px;
+}
+
+.checkboxLable {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.logoModalName {
+    font-size: 20px;
+}
 
 }
 

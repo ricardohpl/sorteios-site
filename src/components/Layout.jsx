@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { StyledMain } from './styles/StyledMain'
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 import Header from './Header';
 
 import Menu from './Menu/Menu';

@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const StyledModal = styled.div`
     
-height: 100vh;
-min-height: 550px;
+height: 112vh;
+min-height: 650px;
 width: 100vw;
 min-width: 650px;
 
@@ -19,14 +19,12 @@ z-index: 9999;
 background: ${props => props.theme.modalBackground}; 
 background-image: ${props => props.theme.bgGradient};
 
+overflow: hidden;
 
 .modal {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
-    min-width: 600px;
-    margin-top: 2vh;
     padding: 1px;
 
     /* backdrop-filter: blur(5px); */
@@ -37,23 +35,21 @@ background-image: ${props => props.theme.bgGradient};
     min-width: 660px;
     width: 85vw;
     max-width: 1050px;
-    height: 60vw;
-    min-height: 300px;
-    max-height: 600px;
+    height: 50vh;
+    min-height: 550px;
 
     text-align: center;
     border-radius: 25px;
     background: ${props => props.theme.mainBg};
     box-shadow: ${props => props.theme.secondBoxShadow};
     border: 2px solid ${props => props.theme.secondColor};
-    
 }
 
 
 .botaoFechar {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 3px;
+    right: 3px;
     height: 25px;
     width: 25px;
     cursor: pointer;
@@ -67,5 +63,40 @@ background-image: ${props => props.theme.bgGradient};
 .botaoFechar:hover {
     opacity: 0.7;
 }
+
+@media (max-width: ${props => props.theme.mediumScreens}) {
+
+min-height: 480px;
+min-width: 500px;
+
+.modal {
+    min-width: 480px;
+    min-height: 500px;
+}
+
+.botaoFechar {
+    font-size: 20px;
+}
+
+}
+
+@media (max-width: ${props => props.theme.smallScreens}) {
+
+min-height: 400px;
+min-width: 300px;
+
+.modal {
+    min-width: 280px;
+}
+
+.botaoFechar {
+    top: 1px;
+    right: 1px;
+    font-size: 16px;
+}
+
+
+}
+
 
 `

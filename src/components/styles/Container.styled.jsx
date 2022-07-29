@@ -5,16 +5,17 @@ export const Container = styled.div`
 
 width: ${(props) => props.w};
 min-width: ${(props) => props.minW};
+min-height: ${(props) => props.minH};
 height: ${(props) => props.h};
 overflow-y: auto;
 
 display: flex;
 flex-direction: column;
-justify-content: center;
+justify-content: space-around;
 align-items: center;
 
-margin-top: 7%;
-padding: 20px;
+margin-top: 2%;
+padding: 15px;
 
 background-color: ${props => props.theme.mainBg};
 border: 3px solid ${props => props.theme.secondColor};
@@ -25,5 +26,21 @@ color: ${props => props.theme.thirdColor};
 font-weight: 600;
 
 position: relative;
+
+
+@media (max-width: ${props => props.theme.mediumScreens}) {
+
+min-width: 490px;
+margin-top: 1%;
+
+}
+
+
+@media (max-width: ${props => props.theme.smallScreens}) {
+
+min-width: 300px;
+
+}
+
 
 `

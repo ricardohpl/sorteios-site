@@ -1,16 +1,17 @@
 
 import styled from 'styled-components'
 
-
 export const StyledNames = styled.div`
 
 display: flex;
 justify-content: center;
+align-items: center;
 padding: 15px;
 width: 60%;
 height: 100%;
 min-height: 600px;
 min-width: 650px;
+text-align: center;
 
 color: ${props => props.theme.thirdColor};
 
@@ -18,8 +19,25 @@ color: ${props => props.theme.thirdColor};
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
-    
+    justify-content: space-around;
+}
+
+.quantity {
+    height: 40px;
+    width: 90px;
+    margin-left: 10px;
+    padding: 2px 5px 0 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.labelHelp {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: ${props => props.theme.secondColor};
 }
 
 .loading {
@@ -33,18 +51,19 @@ color: ${props => props.theme.thirdColor};
     font-family: 'Shadows Into Light', cursive;
     font-size: 42px;
     font-weight: 600;
-    padding: 20px;
+    padding: 10px;
+    margin-bottom: 15px;
 }
 
 .checkbox {
-    margin: 5px 8px;
+    margin: 15px 8px;
     color:  ${props => props.theme.thirdColor};
 }
 
 .displayCount {
-    font-size: 46px;
+    font-size: 66px;
     font-weight: 600;
-    
+    z-index: 2;
 }
 
 .namesContainer {
@@ -52,8 +71,7 @@ color: ${props => props.theme.thirdColor};
     width: 60%;
     height: 150px;
     min-width: 450px;
-    margin: 25px 10px;
-    padding: 10px;
+    padding: 5px;
 }
 
 .namesArea {
@@ -71,7 +89,6 @@ color: ${props => props.theme.thirdColor};
     position: absolute;
     top: 0;
     left: 0;
-
 }
 
 .namesLabel {
@@ -85,48 +102,36 @@ color: ${props => props.theme.thirdColor};
     transition: 0.8s;
     opacity: 0.8;
     color: ${props => props.theme.secondColor};
-    
-
 }
 
 .namesArea:focus ~ .namesLabel,
 .namesArea:valid ~ .namesLabel {
-    top: -25px;
-    font-size: 14px;
+    top: -42px;
+    transform: scale(0.9);
     opacity: 1;
-    padding: 5px 20px;
+    padding: 5px 10px;
 }
 
 // Modal
-#videoModal {
+#animateContainer {
     top: 0px;
-    left: -45px;
+    left: 0;
     position: absolute;
-    width: 110vw;
+    height: 100vh;
+    width: 100vw;
     z-index: -5;
     border-radius: 12px;
     background-image: ${props => props.theme.bgGradient};
-}
+    min-width: 800px;
+    min-height: 650px;
 
-#videoModal video {
-    width: 110vw;
-
-}
-
-.results {
-    margin: auto;
-    width: 60%;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 2px solid ${props => props.theme.secondColor};
-    box-shadow: ${props => props.theme.secondBoxShadow};
-    border-radius: 5px;
-    padding: 10px 25px;
+    overflow: hidden;
 }
 
 .modalButtons {
-    display: flex;
-    justify-content: space-around;
+    z-index: 9;
 }
+
 
 .logoModalName {
     color: ${props => props.theme.thirdColor}
@@ -134,27 +139,154 @@ color: ${props => props.theme.thirdColor};
 
 
 /* Display Names Component */
-.text {
-    color: ${props => props.theme.thirdColor};
-    font-size: 36px;
-    margin-top: 20px;
-}
-
 .displayName {
     height: 70px;
     width: 100%;
-    font-size: 36px;
-    color:  ${props => props.theme.mainColor};
-    z-index: 5;
-    
+    color:  ${props => props.theme.thirdColor};
+    font-size: 28px;
+    z-index: 99;
+
 }
 
 .displayName p {
     margin: auto;
     width: 100%;
-    font-weight: 600;
     padding: 10px;
+}
+
+/* Responsivo */
+@media (max-width: ${props => props.theme.mediumScreens}) {
+    
+min-width: 500px;
+
+.quantity {
+    height: 40px;
+    width: 90px;
+    margin-left: 10px;
+    padding: 2px 5px 0 10px;
+    font-size: 14px;
+}
+
+.labelHelp {
+    margin-top: 3px;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.loading {
+    margin: auto;
+    font-size: 18px;
+}
+
+.title {
+    font-size: 36px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.checkbox {
+    margin: 10px 4px;
+}
+
+.checkboxLabel {
+    font-size: 14px;
+}
+
+.displayCount {
+    font-size: 52px;
+}
+
+.namesContainer {
+    width: 80%;
+    height: 120px;
+    min-width: 350px;
+    padding: 3px;
+}
+
+.namesArea {
+    height: 75px;
+    min-width: 350px;
+    margin-top: 20px;
+    padding: 25px 5px 5px;
+    font-size: 16px;
+}
+
+.namesLabel {
+    top: 20px;
+    left: 4px;
+    padding: 5px 1px;
+    font-size: 14px;
+}
 
 }
+
+@media (max-width: ${props => props.theme.smallScreens}) {
+    
+min-width: 300px;
+min-height: 500px;
+font-size: 14px;
+
+.quantity {
+    height: 30px;
+    width: 65px;
+    margin-left: 10px;
+    padding: 2px 5px 0 10px;
+    font-size: 12px;
+}
+
+.labelHelp {
+    margin-top: 3px;
+    margin-bottom: 5px;
+    font-size: 11px;
+}
+
+.loading {
+    margin: auto;
+    font-size: 16px;
+}
+
+.title {
+    font-size: 36px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.checkbox {
+    margin: 10px 4px;
+}
+
+.checkboxLabel {
+    font-size: 14px;
+}
+
+.displayCount {
+    font-size: 44px;
+}
+
+.namesContainer {
+    width: 60%;
+    height: 80px;
+    min-width: 250px;
+    padding: 3px;
+    margin-top: 25px;
+}
+
+.namesArea {
+    height: 75px;
+    min-width: 250px;
+    margin-top: 15px;
+    padding: 25px 10px 5px;
+    font-size: 14px;
+}
+
+.namesLabel {
+    top: 18px;
+    left: 5px;
+    padding: 5px 1px;
+    font-size: 11px;
+}
+
+}
+
 
 `

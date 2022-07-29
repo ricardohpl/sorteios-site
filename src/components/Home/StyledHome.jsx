@@ -4,14 +4,19 @@ import styled from 'styled-components'
 export const StyledHome = styled.div`
 
 height: 100vh;
+
 width: 100vw;
+min-width: 800px;
 max-width: 100vw;
-color: ${props => props.theme.secondColor};
-text-align: center;
+min-height: 750px;
+
 display: flex;
+text-align: center;
 flex-direction: column;
 align-items: center;
+color: ${props => props.theme.secondColor};
 
+overflow: auto;
 
 .center {
     height: 100%;
@@ -20,15 +25,11 @@ align-items: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 1%;
-    
 }
 
 .highlights {
-    /* background-color: ${props => props.theme.secondColor}; */
-    
-    /* width: 100vw; */
     width: 100%;
     padding: 20px;
 
@@ -39,41 +40,36 @@ align-items: center;
 }
 
 .highlights p {
-    width: 70%;
+    width: 90%;
     margin: auto;
     color: ${props => props.theme.mainColor};
-
+    font-weight: 500;
 }
 
 .highlights h3 {
     color: ${props => props.theme.secondColor};
     width: 70%;
-    margin: auto;
+    margin: 15px auto;
 }
 
 h3 {
     margin: 25px 15px;
     color: ${props => props.theme.secondColor};
-
 }
 
 p {
-    margin: 5px 15px;
+    margin: 5px 10px;
     color: ${props => props.theme.thirdColor};
-
 }
 
 
 .links {
     width: 100%;
-    height: 250px;
     background-color: ${props => props.theme.mainColor};
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 4%;
+    /* flex-wrap: wrap; */
     border-radius: 5px;
-
 }
 
 .linkSession {
@@ -83,38 +79,90 @@ p {
 
 .linkSession.border {
     border-right: 2px solid ${props => props.theme.secondColor};
-
 }
-
 
 .linkContainer {
     display: flex;
     flex-direction: column;
-    height: 225px;
+    /* height: 225px; */
     border-radius: 5px;
 
     color: ${props => props.theme.secondColor};
     text-align: center;
     background-color: ${props => props.theme.mainColor};
     transition: 1.2s ease-out;
+}
+
+.linkContainer p {
+    padding: 10px;
+}
+
+/* Responsive */
+@media (min-width: ${props => props.theme.mediumScreens}) {
+    
+.linkContainer.left:hover {
+    transform: scale(1.4) translateX(-75px) translateY(-30px);
+}
+    
+.linkContainer.right:hover {
+    transform: scale(1.4) translateX(75px) translateY(-30px);
+}
 
 }
 
-.linkContainer:hover {
-    transform: scale(1.3);
+@media (max-width: ${props => props.theme.mediumScreens}) {
 
+font-size: 85%;
+min-width: 500px;
+
+.center {
+    width: 95%;
 }
 
-footer.footer {
-    grid-area: 'footer';
-    width: 100VW;
-    text-align: center;
-
-    background-color: ${props => props.theme.mainColor};
-    color:  ${props => props.theme.secondColor};
+.highlights {
+    margin-top: 45px;
+    width: 95%;
     padding: 5px;
+    font-size: 18px;
+}
 
-    font-size: 14px;
+.links {
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 15px;
+}
+
+.linkSession {
+    width: 100%;
+    padding: 10px;
+}
+
+.linkSession.border {
+    border-right: none;
+    border-bottom: 2px solid ${props => props.theme.secondColor};
+}
+
+
+}
+
+@media (max-width: ${props => props.theme.smallScreens}) {
+
+min-width: 275px;
+
+.highlights {
+    font-size: 16px;
+}
+
+.links {
+    width: 98%;
+}
+
+.linkSession {
+    padding: 5px;
+}
+
 }
 
 `
