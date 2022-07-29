@@ -1,8 +1,6 @@
 
-
-
 # Projeto Sorteia!!!
-Site em React JS para realizar sorteios de nomes ou números personalizável.
+Site em React JS e Styled-Components para realizar sorteios personalizáveis de nomes ou números.
 
 Link para demo:
 https://sorteia.netlify.app/
