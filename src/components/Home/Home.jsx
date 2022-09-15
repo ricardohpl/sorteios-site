@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyledHome } from './StyledHome'
 
 import { StyledLink } from '../styles/StyledLink'
 import Logo from '../Logo/Logo'
 import Footer from '../Footer/Footer'
+import Rules from '../Rules/Rules'
+import LinkRules from '../Rules/LinkRules'
 
 
 const Home = () => {
+
+  const [modal, setModal] = useState('none')
+
   return (
     <StyledHome>
       <Logo />
@@ -18,6 +23,10 @@ const Home = () => {
             Faça sorteios personalizados da forma mais prática para você, com animações e possibilidade de exibir resultados todos de uma vez ou um por vez.
             Selecione um sorteio abaixo e divirta-se!
           </p>
+          <LinkRules 
+            text='Se desejar saber mais detalhes de como o sorteio é realizado e quais suas regras'
+            setModal={setModal}
+          />
         </div>
 
         <div className="links">
@@ -48,8 +57,9 @@ const Home = () => {
         </div>
 
       </div>
-      <Footer />
+      <Rules modal={modal} setModal={setModal} />
 
+      <Footer />
     </StyledHome >
   )
 }

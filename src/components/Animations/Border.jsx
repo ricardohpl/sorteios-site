@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledBorder } from './StyledBorder'
+import { StyledBorder } from './Styles/StyledBorder'
 
 const Border = (props) => {
     return (

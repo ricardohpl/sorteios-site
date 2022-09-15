@@ -1,5 +1,5 @@
 import React from 'react'
-import { Bubbles, StyledBubbles } from './StyledBubbles'
+import { Bubbles, StyledBubbles } from './Styles/StyledBubbles'
 
 const BubblesContainer = () => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BgItenAnimation, StyledBgAnimation } from './StyledBgAnimation'
+import { BgItenAnimation, StyledBgAnimation } from './Styles/StyledBgAnimation'
 
 const BgAnimation = () => {
     return (

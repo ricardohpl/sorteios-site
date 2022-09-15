@@ -4,7 +4,7 @@ export const theme = {
   secondColor: '#e52165', // pink
   thirdColor:  'rgb(214, 214, 214)',// light gray
   errorText: 'red',
-  modalBackground: 'rgba(0, 0, 0, 0.9)',
+  modalBackground: 'rgba(0, 0, 0, 0.7)',
   mainBoxShadow: '8px 6px 8px rgba(90, 90, 90, 0.5)',
   seconBgColor: 'rgba(0, 0, 0, 0.7)',
   clearBgColor: 'rgba(220, 220, 220, 0.4)',

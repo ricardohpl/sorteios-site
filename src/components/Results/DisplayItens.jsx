@@ -6,7 +6,6 @@ const DisplayItens = (props) => {
 
     useEffect(() => {
         setDisplayItem(props.actual)
-        console.log(props.actual, props.list[displayItem])
     }, [props.actual])
 
 

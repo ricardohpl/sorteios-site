@@ -38,17 +38,11 @@ div.content {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 95%;
 
 }
 
 /* Buttons */
-button {
-    margin: 15px;
-    padding: 5px;
-    border-radius: 5px;
-}
-
 button:hover {
     cursor: 'pointer'
 }

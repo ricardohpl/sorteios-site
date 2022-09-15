@@ -7,10 +7,9 @@ import generateNumbers from '../../core/generateNumbers'
 import Modal from '../Modal/Modal'
 import Logo from '../Logo/Logo'
 
-import BubblesContainer from '../Animations/BubblesContainer'
-import BgAnimation from '../Animations/BgAnimation'
 import Results from '../Results/Results'
 import Counter from '../Counter/Counter'
+import AnimateContainer from '../Animations/AnimateContainer'
 
 
 const Numbers = () => {
@@ -29,22 +28,6 @@ const Numbers = () => {
 
     const [allResults, setAllResults] = useState(false)
     const [animations, setAnimations] = useState(true)
-
-    useEffect(() => {
-        setTimeout(() => {
-            if (modal === 'flex') { setLoading(false) }
-        }, [1450])
-    }, [modal])
-
-    useEffect(() => {
-        if (quantity <= 0) { handleQuantity(1) }
-        else { handleQuantity(quantity) }
-    }, [numIni, numEnd])
-
-    useEffect(() => {
-        clearTimeout(idTimeOut)
-        if (doCount) { runCount(count) }
-    }, [doCount])
 
     const handleCount = (numCount) => {
         if (numCount > 0) {
@@ -129,6 +112,25 @@ const Numbers = () => {
         clearTimeout(idTimeOut)
     }
 
+    
+    useEffect(() => {
+        setTimeout(() => {
+            if (modal === 'flex') { setLoading(false) }
+        }, [1450])
+    }, [modal, setLoading])
+
+    useEffect(() => {
+        if (quantity <= 0) { handleQuantity(1) }
+        else { handleQuantity(quantity) } 
+        // eslint-disable-next-line 
+    }, [numIni, numEnd])
+
+    useEffect(() => {
+        clearTimeout(idTimeOut)
+        if (doCount) { runCount(count) }
+        // eslint-disable-next-line 
+    }, [doCount])
+
 
     return (
         <StyledNumbers>
@@ -179,16 +181,13 @@ const Numbers = () => {
                 </Container>
             </div>
 
-            <Modal display={modal} >
+            <Modal display={modal} withBackground={true} >
                 {
                     loading ?
                         <div className="loading"> Carregando... </div>
                         :
                         <>
-                            <div id='animateContainer'>
-                                <BgAnimation />
-                                <BubblesContainer />
-                            </div>
+                            <AnimateContainer />
                             <div className='modal' >
                                 <Logo className='logoModalName' />
                                 {

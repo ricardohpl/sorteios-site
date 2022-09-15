@@ -4,7 +4,7 @@ import { StyledModal } from './StyledModal'
 
 const Modal = (props) => {
   return (
-    <StyledModal display={ props.display } >
+    <StyledModal display={ props.display } withBackground={props.withBackground} >
         { props.children }
     </StyledModal>
   )

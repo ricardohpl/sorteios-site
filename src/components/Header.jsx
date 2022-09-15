@@ -6,7 +6,6 @@ const HeaderLogo = styled(Logo)`
   color: ${props => props.theme.mainColor};
 `
 
-
 const Header = () => {
   return (
     <header className="header">

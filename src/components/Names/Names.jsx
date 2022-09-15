@@ -8,11 +8,10 @@ import generateNamesArray from '../../core/generateNamesArray'
 import Logo from '../Logo/Logo'
 
 import { useEffect } from 'react'
-import BgAnimation from '../Animations/BgAnimation'
-import BubblesContainer from '../Animations/BubblesContainer'
 
 import Results from '../Results/Results'
 import Counter from '../Counter/Counter'
+import AnimateContainer from '../Animations/AnimateContainer'
 
 const Names = () => {
 
@@ -30,30 +29,6 @@ const Names = () => {
   const [quantity, setQuantity] = useState(1)
   const [allResults, setAllResults] = useState(false)
   const [animations, setAnimations] = useState(true)
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (modal === 'flex') { setLoading(false) }
-    }, [1450])
-  }, [modal])
-
-  useEffect(() => {
-    clearTimeout(idTimeOut)
-    if (doCount) { runCount(count) }
-  }, [doCount])
-
-  useEffect(() => {
-    let number = tempNames.length
-    handleQuantity(number)
-  }, [tempNames])
-
-  useEffect(() => {
-    let newList = names.trim().split(/\r?\n/) // split para o Enter
-    let newSplitList = newList.toString().split(',') // split para a vírgula
-    let list = newSplitList.filter(i => i.trim())
-    
-    setTempNames(list)
-  }, [names])
 
   const handleCount = (numCount) => {
     if (numCount > 0) {
@@ -78,7 +53,6 @@ const Names = () => {
 
   const handleChange = (e) => {
     setNames(e.target.value);
-
   }
 
   const runLottery = () => {
@@ -91,7 +65,7 @@ const Names = () => {
   }
 
   const validateLottery = () => {
-    return ( tempNames.length < 1 )
+    return (tempNames.length < 1)
   }
 
   const handleQuantity = (number) => {
@@ -128,10 +102,36 @@ const Names = () => {
     clearTimeout(idTimeOut)
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (modal === 'flex') { setLoading(false) }
+    }, [1450])
+  }, [modal])
+
+  useEffect(() => {
+    clearTimeout(idTimeOut)
+    if (doCount) { runCount(count) }
+    // eslint-disable-next-line
+  }, [doCount])
+
+  useEffect(() => {
+    let number = tempNames.length
+    handleQuantity(number)
+    // eslint-disable-next-line
+  }, [tempNames])
+
+  useEffect(() => {
+    let newList = names.trim().split(/\r?\n/) // split para o Enter
+    let newSplitList = newList.toString().split(',') // split para a vírgula
+    let list = newSplitList.filter(i => i.trim())
+
+    setTempNames(list)
+  }, [names])
+
   return (
     <StyledNames>
       <div className='center'>
-        <Container w='75%' h='85%' minW='525px' minH='575px'>
+        <Container w='80%' h='85%' minW='525px' minH='575px'>
           <h2 className='title'>NOMES</h2>
           <div className='namesContainer'>
             <textarea className='namesArea' type="text" required value={names} onChange={(e) => handleChange(e)} />
@@ -157,16 +157,13 @@ const Names = () => {
         </Container>
       </div>
 
-      <Modal display={modal} >
+      <Modal display={modal} withBackground={true} >
         {
           loading ?
             <div className="loading"> Carregando... </div>
             :
             <>
-              <div id='animateContainer'>
-                <BgAnimation />
-                <BubblesContainer />
-              </div>
+              <AnimateContainer />
               <div className='modal' >
                 <Logo className='logoModalName' />
                 {

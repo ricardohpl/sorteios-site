@@ -4,13 +4,13 @@ import styled from 'styled-components'
 export const StyledFooter = styled.footer`
 
 grid-area: 'footer';
-width: 100vw;
+width: 100%;
 text-align: center;
 min-height: 60px;
 
 background-color: ${props => props.theme.mainColor};
 color:  ${props => props.theme.secondColor};
-padding: 10px;
+padding: 10px 0;
 
 font-size: 14px;
 

@@ -14,7 +14,7 @@ flex-direction: column;
 justify-content: space-around;
 align-items: center;
 
-margin-top: 2%;
+margin: 2% auto 0;
 padding: 15px;
 
 background-color: ${props => props.theme.mainBg};
@@ -39,6 +39,7 @@ margin-top: 1%;
 @media (max-width: ${props => props.theme.smallScreens}) {
 
 min-width: 300px;
+padding: 10px;
 
 }
 

@@ -4,8 +4,8 @@ export const StyledButton = styled.button`
     
 border-radius: 10px;
 
-padding: 10px 25px;
-
+padding: 10px 5px;
+margin: 10px;
 font-size: 16px;
 font-weight: bold;
 color: ${props => props.theme.mainColor};

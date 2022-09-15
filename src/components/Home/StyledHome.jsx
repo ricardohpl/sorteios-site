@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 
-
 export const StyledHome = styled.div`
 
 height: 100vh;
 
-width: 100vw;
 min-width: 800px;
 max-width: 100vw;
 min-height: 750px;
@@ -16,7 +14,6 @@ flex-direction: column;
 align-items: center;
 color: ${props => props.theme.secondColor};
 
-overflow: auto;
 
 .center {
     height: 100%;
@@ -37,6 +34,7 @@ overflow: auto;
     font-size: 22px;
     
     border-radius: 5px;
+    
 }
 
 .highlights p {
@@ -61,7 +59,6 @@ p {
     margin: 5px 10px;
     color: ${props => props.theme.thirdColor};
 }
-
 
 .links {
     width: 100%;
@@ -96,6 +93,7 @@ p {
 .linkContainer p {
     padding: 10px;
 }
+
 
 /* Responsive */
 @media (min-width: ${props => props.theme.mediumScreens}) {
@@ -144,15 +142,14 @@ min-width: 500px;
     border-bottom: 2px solid ${props => props.theme.secondColor};
 }
 
-
 }
 
 @media (max-width: ${props => props.theme.smallScreens}) {
 
-min-width: 275px;
+min-width: 300px;
 
 .highlights {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .links {

@@ -43,6 +43,7 @@ color: ${props => props.theme.thirdColor};
 .loading {
     margin: auto;
     font-size: 22px;
+    font-weight: 500;
     color:  ${props => props.theme.mainColor};
 }
 
@@ -113,21 +114,6 @@ color: ${props => props.theme.thirdColor};
 }
 
 // Modal
-#animateContainer {
-    top: 0px;
-    left: 0;
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    z-index: -5;
-    border-radius: 12px;
-    background-image: ${props => props.theme.bgGradient};
-    min-width: 800px;
-    min-height: 650px;
-
-    overflow: hidden;
-}
-
 .modalButtons {
     z-index: 9;
 }
